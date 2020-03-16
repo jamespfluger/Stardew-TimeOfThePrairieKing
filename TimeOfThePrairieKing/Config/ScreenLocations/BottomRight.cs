@@ -14,7 +14,7 @@ namespace TimeOfThePrairieKingMod.Config.ScreenLocations
         /// <summary>
         /// Whether or not to draw the time in the bottom right corner (defaults false)
         /// </summary>
-        public bool Show { get; set; } = false;
+        public bool Show { get; set; } = true;
 
         /// <summary>
         /// The color to draw the time in
