@@ -16,16 +16,31 @@ namespace TimeOfThePrairieKingMod
 {
     public class TimeOfThePrairieKing : Mod
     {
+        /// <summary>
+        /// User configuration set in the mod
+        /// </summary>
+        public static UserConfig Config { get; set; }
+
+        /// <summary>
+        /// Stardew Valley modding API
+        /// </summary>
         public static IModHelper SMAPI { get; private set; }
+
+        /// <summary>
+        /// SMAPI provided API for logging
+        /// </summary>
         public static IMonitor Logger { get; private set; }
 
+        /// <summary>
+        /// Whether or not the rendered event has been added already
+        /// </summary>
         private bool hasAddedRenderListener = false;
 
         public override void Entry(IModHelper helper)
         {
-            TimeDrawUtil.Config = helper.ReadConfig<UserConfig>();
+            TimeOfThePrairieKing.Config = helper.ReadConfig<TimeOfThePrairieKing.Config.UserConfig>();
 
-            if (!TimeDrawUtil.Config.Enabled)
+            if (!TimeOfThePrairieKing.Config.Enabled)
                 return;
 
             SMAPI = helper;

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TimeOfThePrairieKingMod.Config.ScreenLocations;
-
-namespace TimeOfThePrairieKingMod.Config
+﻿namespace TimeOfThePrairieKingMod.Config
 {
     /// <summary>
     /// User configuration options set in config.json

@@ -1,15 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
-using StardewValley.Minigames;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using TimeOfThePrairieKingMod.Config;
 
 namespace TimeOfThePrairieKingMod.Utils
 {
@@ -18,11 +12,6 @@ namespace TimeOfThePrairieKingMod.Utils
     /// </summary>
     public static class TimeDrawUtil
     {
-        /// <summary>
-        /// User configuration set in the mod
-        /// </summary>
-        public static UserConfig Config { get; set; }
-
         /// <summary>
         /// Possible screen corners to draw the time at
         /// </summary>
@@ -42,39 +31,39 @@ namespace TimeOfThePrairieKingMod.Utils
         {
             try
             {
-                if (Config.MinigameHud.Show)
+                if (TimeOfThePrairieKing.Config.MinigameHud.Show)
                 {
                     Vector2 hudDestination = DestinationUtil.GetHudDestination();
                     hudDestination = hudDestination * Game1.options.zoomLevel;
-                    Color timeColor = GetColorFromHex(Config.MinigameHud.HexColor);
+                    Color timeColor = GetColorFromHex(TimeOfThePrairieKing.Config.MinigameHud.HexColor);
                     DrawTimeAtDestination(spriteBatch, hudDestination, timeColor);
                 }
 
-                if (Config.TopLeft.Show)
+                if (TimeOfThePrairieKing.Config.TopLeft.Show)
                 {
                     Vector2 topLeftDestination = DestinationUtil.GetCornerDestination(ScreenCorner.TopLeft);
-                    Color timeColor = GetColorFromHex(Config.TopLeft.HexColor);
+                    Color timeColor = GetColorFromHex(TimeOfThePrairieKing.Config.TopLeft.HexColor);
                     DrawTimeAtDestination(spriteBatch, topLeftDestination, timeColor);
                 }
 
-                if (Config.TopRight.Show)
+                if (TimeOfThePrairieKing.Config.TopRight.Show)
                 {
                     Vector2 topRightDestination = DestinationUtil.GetCornerDestination(ScreenCorner.TopRight);
-                    Color timeColor = GetColorFromHex(Config.TopRight.HexColor);
+                    Color timeColor = GetColorFromHex(TimeOfThePrairieKing.Config.TopRight.HexColor);
                     DrawTimeAtDestination(spriteBatch, topRightDestination, timeColor);
                 }
 
-                if (Config.BottomLeft.Show)
+                if (TimeOfThePrairieKing.Config.BottomLeft.Show)
                 {
                     Vector2 bottomLeftDestination = DestinationUtil.GetCornerDestination(ScreenCorner.BottomLeft);
-                    Color timeColor = GetColorFromHex(Config.BottomLeft.HexColor);
+                    Color timeColor = GetColorFromHex(TimeOfThePrairieKing.Config.BottomLeft.HexColor);
                     DrawTimeAtDestination(spriteBatch, bottomLeftDestination, timeColor);
                 }
 
-                if (Config.BottomRight.Show)
+                if (TimeOfThePrairieKing.Config.BottomRight.Show)
                 {
                     Vector2 bottomRightDestination = DestinationUtil.GetCornerDestination(ScreenCorner.BottomRight);
-                    Color timeColor = GetColorFromHex(Config.BottomRight.HexColor);
+                    Color timeColor = GetColorFromHex(TimeOfThePrairieKing.Config.BottomRight.HexColor);
                     DrawTimeAtDestination(spriteBatch, bottomRightDestination, timeColor);
                 }
             }

@@ -1,11 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using StardewValley;
 using StardewValley.Minigames;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TimeOfThePrairieKingMod.Config;
 using static TimeOfThePrairieKingMod.Utils.TimeDrawUtil;
 
@@ -39,7 +34,7 @@ namespace TimeOfThePrairieKingMod.Utils
             Vector2 destination = new Vector2();
 
             // User configured about to indent
-            float indentation = TimeDrawUtil.Config.Indentation;
+            float indentation = TimeOfThePrairieKing.Config.Indentation;
 
             // Resolution zoom value from user's options menu
             float zoomAdjustment = 1f / Game1.options.zoomLevel;
