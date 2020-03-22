@@ -9,8 +9,8 @@ You can customize where the time appears, either with the HUD (by default) or in
 The mod is currently compatible with Stardew Valley 1.4
 
 ### Installation
-1. Install the latest version of SMAPI (requires 3.0.0 or above)
-2. Download this mod and unzip the `EqualMoneySplit` folder into `Stardew Valley/Mods`. The latter can be found in your game's installation directory
+1. Install the latest version of [SMAPI](https://smapi.io/) _(requires 3.0.0 or above)_
+2. Download this mod and unzip the `TimeOfThePrairieKing` folder into `Stardew Valley/Mods`. The latter can be found in your game's installation directory
 3. Run the game using SMAPI
 
 
