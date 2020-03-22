@@ -1,14 +1,7 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using StardewModdingAPI;
+﻿using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
 using StardewValley.Minigames;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TimeOfThePrairieKingMod.Config;
 using TimeOfThePrairieKingMod.Utils;
 
@@ -16,16 +9,31 @@ namespace TimeOfThePrairieKingMod
 {
     public class TimeOfThePrairieKing : Mod
     {
+        /// <summary>
+        /// User configuration set in the mod
+        /// </summary>
+        public static UserConfig Config { get; private set; }
+
+        /// <summary>
+        /// Stardew Valley modding API
+        /// </summary>
         public static IModHelper SMAPI { get; private set; }
+
+        /// <summary>
+        /// SMAPI provided API for logging
+        /// </summary>
         public static IMonitor Logger { get; private set; }
 
+        /// <summary>
+        /// Whether or not the rendered event has been added already
+        /// </summary>
         private bool hasAddedRenderListener = false;
 
         public override void Entry(IModHelper helper)
         {
-            TimeDrawUtil.Config = helper.ReadConfig<UserConfig>();
+            TimeOfThePrairieKing.Config = helper.ReadConfig<UserConfig>();
 
-            if (!TimeDrawUtil.Config.Enabled)
+            if (!TimeOfThePrairieKing.Config.Enabled)
                 return;
 
             SMAPI = helper;
@@ -61,7 +69,7 @@ namespace TimeOfThePrairieKingMod
         }
 
         /// <summary>
-        /// For performance reasons, only check if the game 
+        /// For performance reasons, only check if the game time has changed
         /// </summary>
         private void OnTimeChangedHandler(object sender, TimeChangedEventArgs args)
         {

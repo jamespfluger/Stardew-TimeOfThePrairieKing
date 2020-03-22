@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TimeOfThePrairieKingMod.Config.ScreenLocations
+﻿namespace TimeOfThePrairieKingMod.Config.ScreenLocations
 {
     /// <summary>
     /// User configuration for drawing the time on the minigame's HUD
@@ -14,7 +8,7 @@ namespace TimeOfThePrairieKingMod.Config.ScreenLocations
         /// <summary>
         /// Whether or not to draw the time on the minigame's HUD (defaults true)
         /// </summary>
-        public bool Show { get; set; } = false;
+        public bool Show { get; set; } = true;
 
         /// <summary>
         /// The color to draw the time in

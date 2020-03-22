@@ -1,15 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using StardewValley;
-using StardewValley.Minigames;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using TimeOfThePrairieKingMod.Config;
 
 namespace TimeOfThePrairieKingMod.Utils
 {
@@ -18,11 +12,6 @@ namespace TimeOfThePrairieKingMod.Utils
     /// </summary>
     public static class TimeDrawUtil
     {
-        /// <summary>
-        /// User configuration set in the mod
-        /// </summary>
-        public static UserConfig Config { get; set; }
-
         /// <summary>
         /// Possible screen corners to draw the time at
         /// </summary>
@@ -42,22 +31,41 @@ namespace TimeOfThePrairieKingMod.Utils
         {
             try
             {
-                if (Config.MinigameHud.Show)
+                if (TimeOfThePrairieKing.Config.MinigameHud.Show)
                 {
                     Vector2 hudDestination = DestinationUtil.GetHudDestination();
-                    Color timeColor = GetColorFromHex(Config.MinigameHud.HexColor);
+                    hudDestination = hudDestination * Game1.options.zoomLevel;
+                    Color timeColor = GetColorFromHex(TimeOfThePrairieKing.Config.MinigameHud.HexColor);
                     DrawTimeAtDestination(spriteBatch, hudDestination, timeColor);
                 }
 
-                if (Config.TopLeft.Show)
-                    DrawTimeInCorner(spriteBatch, ScreenCorner.TopLeft, Config.TopLeft.HexColor);
-                if (Config.TopRight.Show)
-                    DrawTimeInCorner(spriteBatch, ScreenCorner.TopRight, Config.TopRight.HexColor);
-                if (Config.BottomLeft.Show)
-                    DrawTimeInCorner(spriteBatch, ScreenCorner.BottomLeft, Config.BottomLeft.HexColor);
-                if (Config.BottomRight.Show)
-                    DrawTimeInCorner(spriteBatch, ScreenCorner.BottomRight, Config.BottomRight.HexColor);
+                if (TimeOfThePrairieKing.Config.TopLeft.Show)
+                {
+                    Vector2 topLeftDestination = DestinationUtil.GetCornerDestination(ScreenCorner.TopLeft);
+                    Color timeColor = GetColorFromHex(TimeOfThePrairieKing.Config.TopLeft.HexColor);
+                    DrawTimeAtDestination(spriteBatch, topLeftDestination, timeColor);
+                }
 
+                if (TimeOfThePrairieKing.Config.TopRight.Show)
+                {
+                    Vector2 topRightDestination = DestinationUtil.GetCornerDestination(ScreenCorner.TopRight);
+                    Color timeColor = GetColorFromHex(TimeOfThePrairieKing.Config.TopRight.HexColor);
+                    DrawTimeAtDestination(spriteBatch, topRightDestination, timeColor);
+                }
+
+                if (TimeOfThePrairieKing.Config.BottomLeft.Show)
+                {
+                    Vector2 bottomLeftDestination = DestinationUtil.GetCornerDestination(ScreenCorner.BottomLeft);
+                    Color timeColor = GetColorFromHex(TimeOfThePrairieKing.Config.BottomLeft.HexColor);
+                    DrawTimeAtDestination(spriteBatch, bottomLeftDestination, timeColor);
+                }
+
+                if (TimeOfThePrairieKing.Config.BottomRight.Show)
+                {
+                    Vector2 bottomRightDestination = DestinationUtil.GetCornerDestination(ScreenCorner.BottomRight);
+                    Color timeColor = GetColorFromHex(TimeOfThePrairieKing.Config.BottomRight.HexColor);
+                    DrawTimeAtDestination(spriteBatch, bottomRightDestination, timeColor);
+                }
             }
             catch (Exception e)
             {
@@ -74,23 +82,14 @@ namespace TimeOfThePrairieKingMod.Utils
         private static void DrawTimeAtDestination(SpriteBatch spriteBatch, Vector2 destination, Color color)
         {
             spriteBatch.DrawString(spriteFont: Game1.smallFont,
-                                   text: Game1.getTimeOfDayString(Game1.timeOfDay),
-                                   position: destination,
-                                   color: color);
-        }
-
-        /// <summary>
-        /// Draws the time in a given corner
-        /// </summary>
-        /// <param name="spriteBatch">Sprite batch to draw on</param>
-        /// <param name="corner">Corner of screen to draw in</param>
-        /// <param name="color">Color of the font to use</param>
-        private static void DrawTimeInCorner(SpriteBatch spriteBatch, ScreenCorner corner, string color)
-        {
-            Vector2 destination = DestinationUtil.GetCornerDestination(corner);
-            Color timeColor = GetColorFromHex(color);
-
-            DrawTimeAtDestination(spriteBatch, destination, timeColor);
+                                         text: Game1.getTimeOfDayString(Game1.timeOfDay),
+                                     position: destination,
+                                        color: color,
+                                     rotation: 0f,
+                                       origin: Vector2.Zero,
+                                        scale: 1f * Game1.options.zoomLevel,
+                                      effects: SpriteEffects.None,
+                                   layerDepth: 0f);
         }
 
         /// <summary>

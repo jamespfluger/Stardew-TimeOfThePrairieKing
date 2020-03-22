@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TimeOfThePrairieKingMod.Config.ScreenLocations
+﻿namespace TimeOfThePrairieKingMod.Config.ScreenLocations
 {
     /// <summary>
     /// User configuration for drawing the time in the bottom right corner
@@ -12,9 +6,9 @@ namespace TimeOfThePrairieKingMod.Config.ScreenLocations
     public class BottomRight
     {
         /// <summary>
-        /// Whether or not to draw the time in the bottom right corner (defaults false)
+        /// Whether or not to draw the time in the bottom right corner
         /// </summary>
-        public bool Show { get; set; } = true;
+        public bool Show { get; set; } = false;
 
         /// <summary>
         /// The color to draw the time in
