@@ -1,14 +1,7 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using StardewModdingAPI;
+﻿using StardewModdingAPI;
 using StardewModdingAPI.Events;
 using StardewValley;
 using StardewValley.Minigames;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TimeOfThePrairieKingMod.Config;
 using TimeOfThePrairieKingMod.Utils;
 
@@ -76,7 +69,7 @@ namespace TimeOfThePrairieKingMod
         }
 
         /// <summary>
-        /// For performance reasons, only check if the game 
+        /// For performance reasons, only check if the game time has changed
         /// </summary>
         private void OnTimeChangedHandler(object sender, TimeChangedEventArgs args)
         {
