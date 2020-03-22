@@ -1,4 +1,6 @@
-﻿namespace TimeOfThePrairieKingMod.Config
+﻿using TimeOfThePrairieKingMod.Config.ScreenLocations;
+
+namespace TimeOfThePrairieKingMod.Config
 {
     /// <summary>
     /// User configuration options set in config.json

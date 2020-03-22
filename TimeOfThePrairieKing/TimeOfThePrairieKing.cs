@@ -19,7 +19,7 @@ namespace TimeOfThePrairieKingMod
         /// <summary>
         /// User configuration set in the mod
         /// </summary>
-        public static UserConfig Config { get; set; }
+        public static UserConfig Config { get; private set; }
 
         /// <summary>
         /// Stardew Valley modding API
@@ -38,7 +38,7 @@ namespace TimeOfThePrairieKingMod
 
         public override void Entry(IModHelper helper)
         {
-            TimeOfThePrairieKing.Config = helper.ReadConfig<TimeOfThePrairieKing.Config.UserConfig>();
+            TimeOfThePrairieKing.Config = helper.ReadConfig<UserConfig>();
 
             if (!TimeOfThePrairieKing.Config.Enabled)
                 return;
