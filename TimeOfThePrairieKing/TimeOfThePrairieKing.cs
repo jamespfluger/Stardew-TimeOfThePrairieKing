@@ -39,33 +39,7 @@ namespace TimeOfThePrairieKingMod
             SMAPI = helper;
             Logger = Monitor;
 
-            Helper.Events.GameLoop.DayStarted += OnDayStartedHandler;
-            Helper.Events.GameLoop.DayEnding += OnDayEndedHandler;
-        }
-
-        /// <summary>
-        /// Only try to start the mod if the game is a multiplayer game
-        /// </summary>
-        private void OnDayStartedHandler(object sender, DayStartedEventArgs args)
-        {
-            if (Context.IsMultiplayer)
-            {
-                Helper.Events.GameLoop.TimeChanged += OnTimeChangedHandler;
-                hasAddedRenderListener = false;
-            }
-        }
-
-        /// <summary>
-        /// At the end of each day, remove the mod handlers if we are in multiplayer
-        /// </summary>
-        private void OnDayEndedHandler(object sender, DayEndingEventArgs args)
-        {
-            if (Context.IsMultiplayer)
-            {
-                Helper.Events.GameLoop.TimeChanged -= OnTimeChangedHandler;
-                Helper.Events.Display.Rendered -= OnRenderedHandler;
-                hasAddedRenderListener = false;
-            }
+            Helper.Events.GameLoop.TimeChanged += OnTimeChangedHandler;
         }
 
         /// <summary>
@@ -73,7 +47,7 @@ namespace TimeOfThePrairieKingMod
         /// </summary>
         private void OnTimeChangedHandler(object sender, TimeChangedEventArgs args)
         {
-            if (Game1.currentMinigame is AbigailGame)
+            if (Context.IsMultiplayer && Game1.currentMinigame is AbigailGame)
             {
                 if (!hasAddedRenderListener)
                 {
